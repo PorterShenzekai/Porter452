@@ -1,0 +1,79 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Custom Components</title>  
+<style>  
+    body {  
+        transition: background-color 0.5s ease;  
+        font-family: Arial, sans-serif;  
+    }  
+  
+    .centered-dialog {  
+        position: fixed;  
+        top: 50%;  
+        left: 50%;  
+        transform: translate(-50%, -50%);  
+        background-color: #fff;  
+        border: 1px solid #ccc;  
+        padding: 20px;  
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+        display: none; /* Initially hidden */  
+    }  
+  
+    .box {  
+        width: 300px;  
+        height: 200px;  
+        background-color: #310428;  
+        margin: 30px;  
+        transition: background-color 0.3s ease;  
+    }  
+  
+    .box:hover {  
+        background-color: #998418;  
+    }  
+  
+    .dialog-button {  
+        margin-top: 15px;  
+    }  
+</style>  
+<script>  
+    window.addEventListener('resize', function() {  
+        
+        if (window.innerWidth < 800) {  
+            document.body.style.backgroundColor = 'lightblue';  
+        } else {  
+            document.body.style.backgroundColor = 'lightgreen';  
+        }  
+    });  
+  
+    function showDialog() {  
+        const dialog = document.getElementById('myDialog');  
+        dialog.style.display = 'block';  
+    }  
+  
+    function closeDialog() {  
+        const dialog = document.getElementById('myDialog');  
+        dialog.style.display = 'none';  
+    }  
+  
+    window.onload = function() {  
+         
+        window.dispatchEvent(new Event('resize'));  
+    };  
+</script>  
+</head>  
+<body>  
+  
+<div class="box"></div>  
+  
+<button onclick="showDialog()">Click Dialog</button>  
+  
+<div id="myDialog" class="centered-dialog">  
+    <p>This is a centered dialog.</p>  
+    <button class="dialog-button" onclick="closeDialog()">Down Dialog</button>  
+</div>  
+  
+</body>  
+</html>
